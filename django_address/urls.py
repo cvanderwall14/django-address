@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from address_demo.views import *
+
 urlpatterns = [
+    url(r'^$', DemoView.as_view(), name='demo_page'),
     url(r'^admin/', admin.site.urls),
 ]
