@@ -62,4 +62,7 @@ class Address(models.Model):
             if txt:
                 txt += ', '
             txt += str(self.country)
-        return txt
+        if txt:
+            return txt
+        else:
+            return self.raw

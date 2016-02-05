@@ -57,3 +57,8 @@ class AddressModelTest(TestCase):
     def test_string_representation(self):
         txt = str(self.address)
         self.assertEqual(txt, '1234 Main Street, San Francisco, CA 94123, United States') 
+
+    def test_string_representation_raw(self):
+        self.address2 = Address.objects.create(raw='foo')
+        txt = str(self.address2)
+        self.assertEqual(txt, 'foo')
