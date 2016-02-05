@@ -28,3 +28,12 @@ class CityModelTest(TestCase):
     def test_string_representation(self):
         txt = str(self.city)
         self.assertEqual(txt, 'San Francisco')
+
+
+class PostalCodeModelTest(TestCase):
+    def setUp(self):
+        self.postal_code = PostalCode.objects.create(value='94123')
+
+    def test_string_representation(self):
+        txt = str(self.postal_code)
+        self.assertEqual(txt, '94123')

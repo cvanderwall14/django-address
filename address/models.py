@@ -22,3 +22,8 @@ class City(models.Model):
         return self.name
 
 
+class PostalCode(models.Model):
+    value = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.value
