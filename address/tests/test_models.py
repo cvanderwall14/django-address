@@ -19,3 +19,12 @@ class StateModelTest(TestCase):
     def test_string_representation(self):
         txt = str(self.state)
         self.assertEqual(txt, 'California')
+
+
+class CityModelTest(TestCase):
+    def setUp(self):
+        self.city = City.objects.create(name='San Francisco')
+
+    def test_string_representation(self):
+        txt = str(self.city)
+        self.assertEqual(txt, 'San Francisco')
