@@ -6,3 +6,6 @@ class TestDemoPage(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
+    def test_demo_page_accepts_POST(self):
+        response = self.client.POST
+

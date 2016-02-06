@@ -17,7 +17,7 @@ var hiddenForm = {
 };
 
 function init() {
-    var input = document.getElementById('id_address');
+    var input = document.getElementById('id_raw');
     autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.addListener('place_changed', fillInAddress);
 }

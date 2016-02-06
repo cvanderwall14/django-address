@@ -4,6 +4,9 @@ from django.db import models
 class Country(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        verbose_name_plural = 'Countries'
+
     def __str__(self):
         return self.name
 
@@ -18,6 +21,9 @@ class State(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        verbose_name_plural = 'Cities'
+    
     def __str__(self):
         return self.name
 
@@ -30,13 +36,16 @@ class PostalCode(models.Model):
 
 
 class Address(models.Model):
-    street_number = models.CharField(max_length=10, blank=True, null=True)
+    street_number = models.CharField(max_length=50, blank=True, null=True)
     street = models.CharField(max_length=100, blank=True, null=True)
     city = models.ForeignKey(City, blank=True, null=True)
     state = models.ForeignKey(State, blank=True, null=True)
     postal_code = models.ForeignKey(PostalCode, blank=True, null=True)    
     country = models.ForeignKey(Country, blank=True, null=True)
     raw = models.CharField(max_length=1000, blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Addresses'
 
     def __str__(self):
         txt = ''

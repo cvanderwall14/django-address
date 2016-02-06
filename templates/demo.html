@@ -17,6 +17,27 @@
     <form action="/" method="post">
       {% csrf_token %}
       {{ form.as_p }}
+      <input type="submit" value="submit">
     </form>
+    <h2>Addresses</h2>
+    {% for address in addresses %}
+    <p>{{ address }}</p>
+    {% endfor %}
+    <h2>Cities</h2>
+    {% for city in cities %}
+    <p>{{ city }}</p>
+    {% endfor %}
+    <h2>States</h2>
+    {% for state in states %}
+    <p>{{ state }}</p>
+    {% endfor %}
+    <h2>Postal Codes</h2>
+    {% for postal_code in postal_codes %}
+    <p>{{ postal_code }}</p>
+    {% endfor %}
+    <h2>Countries</h2>
+    {% for country in countries %}
+    <p>{{ country }}</p>
+    {% endfor %}
   </body>
 </html>
