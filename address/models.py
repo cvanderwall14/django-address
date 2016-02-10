@@ -12,15 +12,17 @@ class Country(models.Model):
 
 
 class State(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
+    country = models.ForeignKey(Country)
 
     def __str__(self):
         return self.name
 
 
 class City(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-
+    name = models.CharField(max_length=100)
+    state = models.ForeignKey(State, blank=True, null=True)
+    
     class Meta:
         verbose_name_plural = 'Cities'
     
@@ -29,7 +31,8 @@ class City(models.Model):
 
 
 class PostalCode(models.Model):
-    value = models.CharField(max_length=20, unique=True)
+    value = models.CharField(max_length=20)
+    country = models.ForeignKey(Country)
 
     def __str__(self):
         return self.value
@@ -43,7 +46,10 @@ class Address(models.Model):
     postal_code = models.ForeignKey(PostalCode, blank=True, null=True)    
     country = models.ForeignKey(Country, blank=True, null=True)
     raw = models.CharField(max_length=1000, blank=True, null=True)
-
+    care_of = models.CharField(max_length=100, blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    
     class Meta:
         verbose_name_plural = 'Addresses'
 
@@ -75,3 +81,10 @@ class Address(models.Model):
             return txt
         else:
             return self.raw
+
+    def save(self, *args, **kwargs):
+        gmaps = googlemaps.Client(key=local_settings.GOOGLE_MAPS_KEY)
+        geocode_result = gmaps.geocode(str(self))
+        self.latitude = geocode_result[0]['geometry']['location']['lat']
+        self.longitude = geocode_result[0]['geometry']['location']['lng']
+        super(Address, self).save(*args, **kwargs)
