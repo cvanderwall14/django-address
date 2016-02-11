@@ -1,6 +1,4 @@
-==============
-Django Address
-==============
+#Django Address
 
 Django Address is a simple Django app to store address
 data. The address form has Google Map's Autocomplete
@@ -9,7 +7,7 @@ functionality built in.
 Quick start
 -------------
 
-1. Add "django-address" to your INSTALLED_APPS setting like this::
+1. Add "django-address" to your INSTALLED_APPS setting like this:
 
      INSTALLED_APPS = [
          ...
