@@ -7,10 +7,10 @@ functionality built in.
 Quick start
 -------------
 
-1. Add "django-address" to your INSTALLED_APPS setting like this:
+1. Add "address" to your INSTALLED_APPS setting like this:
 
      INSTALLED_APPS = [
-         ...
+          ...
          'address',
      ]
 
