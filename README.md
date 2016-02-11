@@ -19,7 +19,7 @@ Quick start
 
 3. To use the address form, just import 'AddressFormSimple' from address.forms.
 
-4. Don't forget to include {{ form.media }} in the <head> of your html to
+4. Don't forget to include {{ form.media }} in the head of your html to
    activate the autocomplete Javascript.
 
 5. You may also need to run 'python manage.py collectstatic'
